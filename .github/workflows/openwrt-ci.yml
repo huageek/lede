@@ -158,12 +158,13 @@ jobs:
           # 解锁网易云灰色歌曲:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-unblockmusic=n
+          CONFIG_PACKAGE_luci-app-accessctrol=n
           EOF
           
           # wireless:
           cat >> .config <<EOF
           CONFIG_PACKAGE_wpad-basic=n
-          CONFIG_PACKAGE_hostapd=y
+          # CONFIG_PACKAGE_hostapd=y
           # CONFIG_PACKAGE_wpa-supplicant=y
           CONFIG_PACKAGE_wpad-openssl=y
           EOF
@@ -246,7 +247,7 @@ jobs:
       - name: Upload config.buildinfo
         uses: actions/upload-artifact@master
         with:
-          name: config.seed
+          name: config.buildinfo
           path: ./bin/targets/*/*/config.buildinfo
 
       - name: Upload firmware
